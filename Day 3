@@ -1,0 +1,339 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "name": "xpython",
+      "display_name": "Python 3.13 (XPython)",
+      "language": "python"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.13.1"
+    }
+  },
+  "nbformat_minor": 5,
+  "nbformat": 4,
+  "cells": [
+    {
+      "id": "34631af0-2247-436d-b774-66013fc7bc67",
+      "cell_type": "code",
+      "source": "fruits = [\"Apple\",\"Apricot\",\"Cherry\",\"Plum\",\"Guava\"]\n\nprint(fruits)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "['Apple', 'Apricot', 'Cherry', 'Plum', 'Guava']\n"
+        }
+      ],
+      "execution_count": 1
+    },
+    {
+      "id": "9645b5d7-2ee8-44b1-bc41-78d41b38aca9",
+      "cell_type": "code",
+      "source": "colors =[\"Red\",\"Green\",\"Yellow\",\"Blue\",\"Black\"]\nprint(colors)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "['Red', 'Green', 'Yellow', 'Blue', 'Black']\n"
+        }
+      ],
+      "execution_count": 2
+    },
+    {
+      "id": "b5a6d509-1de6-4caa-87cb-9d8f46be5b45",
+      "cell_type": "code",
+      "source": "students =[\"Aditya\",\"Aryan\",\"Arushi\",\"Aditi\"]\nprint(students)\nstudents.append(\"Rahul\")\nprint (\"after append :\",students)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "['Aditya', 'Aryan', 'Arushi', 'Aditi']\nafter append : ['Aditya', 'Aryan', 'Arushi', 'Aditi', 'Rahul']\n"
+        }
+      ],
+      "execution_count": 3
+    },
+    {
+      "id": "c540095e-e6be-4d17-8a92-af8d72fd6b55",
+      "cell_type": "code",
+      "source": "numbers =[12,78.29,34,21]\nprint(\"first elements \",  numbers[0])\nprint(\"last elements\", numbers[-1])",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "first elements  12\nlast elements 21\n"
+        }
+      ],
+      "execution_count": 9
+    },
+    {
+      "id": "be1da23b-4422-498c-ad0e-a998c3f61806",
+      "cell_type": "code",
+      "source": "numbers =[12,37,15,18,27]\nnumbers.sort(reverse=True)\nprint(numbers)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "[37, 27, 18, 15, 12]\n"
+        }
+      ],
+      "execution_count": 11
+    },
+    {
+      "id": "2267a146-d4bc-4b97-a688-a9d61245a13b",
+      "cell_type": "code",
+      "source": "numbers =[12,37,15,18,27]\nnumbers.sort(reverse=False)\nprint(numbers)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "[12, 15, 18, 27, 37]\n"
+        }
+      ],
+      "execution_count": 12
+    },
+    {
+      "id": "51dc569e-a5fc-4ced-a301-f315bfdc75fd",
+      "cell_type": "code",
+      "source": "numbers = [32,17,78,24,18]\nmaximum = max(numbers)\n\nprint(\"maximum:\", maximum)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "maximum: 78\n"
+        }
+      ],
+      "execution_count": 18
+    },
+    {
+      "id": "fb82c3e7-9c32-45f1-a8a7-f8a467b3ffed",
+      "cell_type": "code",
+      "source": "numbers ={13,23,84,13,65}\nprint (numbers)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "{65, 84, 13, 23}\n"
+        }
+      ],
+      "execution_count": 19
+    },
+    {
+      "id": "357e684c-ea8d-43ca-a860-9e2c4d149a32",
+      "cell_type": "code",
+      "source": "numbers ={23,75,87,93,24,23,87}\nnumbers.add(95)\nprint( numbers)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "{87, 23, 24, 75, 93, 95}\n"
+        }
+      ],
+      "execution_count": 22
+    },
+    {
+      "id": "f6724830-a655-4c56-92e7-955785e8556b",
+      "cell_type": "code",
+      "source": "student = {\"name\":\"Rahul\",\"age\":20}\nprint(student)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "{'name': 'Rahul', 'age': 20}\n"
+        }
+      ],
+      "execution_count": 24
+    },
+    {
+      "id": "4ad50fa3-308d-4cf2-8caa-fbf4fc46cb52",
+      "cell_type": "code",
+      "source": "fruits =[\"Apple\",\"Banana\",\"Apricot\",\"Blueberry\"]\nprint(fruits)\nfruits.remove(\"Banana\")\nprint(\"after remove:\", fruits)\n",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "['Apple', 'Banana', 'Apricot', 'Blueberry']\nafter remove: ['Apple', 'Apricot', 'Blueberry']\n"
+        }
+      ],
+      "execution_count": 2
+    },
+    {
+      "id": "09b08bae-8cd2-4455-920b-ee78b4202be1",
+      "cell_type": "code",
+      "source": "a =56 \nb = 45\nsum = a + b\nprint(sum)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "101\n"
+        }
+      ],
+      "execution_count": 7
+    },
+    {
+      "id": "707ce337-3694-4a4f-9769-b8c2de3875cc",
+      "cell_type": "code",
+      "source": "print(\"Hello Python\")",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "Hello Python\n"
+        }
+      ],
+      "execution_count": 8
+    },
+    {
+      "id": "fbe2b904-4076-4267-8c3a-d992c086e651",
+      "cell_type": "code",
+      "source": "a =30\nif a%2 :\n    \n  print(\"the number is even\")\nelse:\n   print(\"the number is odd\")\n   ",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "the number is odd\n"
+        }
+      ],
+      "execution_count": 14
+    },
+    {
+      "id": "2f13b57a-162b-4be2-9e36-1ed4c1b18cb5",
+      "cell_type": "code",
+      "source": "def find_square(number):\n    return number **2\nresult = find_square(7)\nprint(result)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "49\n"
+        }
+      ],
+      "execution_count": 18
+    },
+    {
+      "id": "43dbaebc-6e06-4a92-a2d9-4e3afab81120",
+      "cell_type": "code",
+      "source": "a=20\nb=10\nc=15\naverage=a+b+c/2\nprint(average)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "37.5\n"
+        }
+      ],
+      "execution_count": 19
+    },
+    {
+      "id": "91fb6c52-7e4d-405f-9109-f49f34a15ead",
+      "cell_type": "code",
+      "source": "my_tuple = [\"Apple\",\"Banana\",\"Plum\",\"Guava\"]\nfor item in my_tuple:\n   print (item)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "Apple\nBanana\nPlum\nGuava\n"
+        }
+      ],
+      "execution_count": 2
+    },
+    {
+      "id": "5cee7ae6-5cbd-4cdb-a88e-4c6b903adc2e",
+      "cell_type": "code",
+      "source": "my_tuple =[19,34,35,72,19,19,27]\ncount_nineteen = my_tuple.count(19)\nprint(count_nineteen)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "3\n"
+        }
+      ],
+      "execution_count": 6
+    },
+    {
+      "id": "3392e09a-90e4-4138-a598-2b6bca4dacd8",
+      "cell_type": "code",
+      "source": "books =  [\"Atomic Habit\",\"Deep Work\"]\nprint(books)\nbooks.append(\"Pyschology of Money\")\nprint(\"after append:\",books)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "['Atomic Habit', 'Deep Work']\nafter append: ['Atomic Habit', 'Deep Work', 'Pyschology of Money']\n"
+        }
+      ],
+      "execution_count": 4
+    },
+    {
+      "id": "21ab6c5c-5617-4ae3-bec0-e6792c2b427d",
+      "cell_type": "code",
+      "source": "",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [],
+      "execution_count": null
+    }
+  ]
+}

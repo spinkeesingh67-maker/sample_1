@@ -1,0 +1,978 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "name": "python",
+      "display_name": "Python (Pyodide)",
+      "language": "python"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "python",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.8"
+    }
+  },
+  "nbformat_minor": 5,
+  "nbformat": 4,
+  "cells": [
+    {
+      "id": "6fe0156d-3f3b-465e-8143-a2cfbe94a2c5",
+      "cell_type": "code",
+      "source": "%pip instal pandas\nimport pandas as pd\n",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [],
+      "execution_count": 2
+    },
+    {
+      "id": "b5bbe614-1584-46e4-983c-6d4068939bfc",
+      "cell_type": "code",
+      "source": "marks = pd.Series([80,90,75,65])\nprint(marks)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "0    80\n1    90\n2    75\n3    65\ndtype: int64\n"
+        }
+      ],
+      "execution_count": 3
+    },
+    {
+      "id": "f7d1cbcd-661d-4011-8fb5-f161dbc1b67b",
+      "cell_type": "code",
+      "source": "import pandas as pd\ndf = pd.read_csv(\"record.csv\")\n\nprint(df)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "  RollNo  Name    Sub1  Sub2  Sub3  Sub4  Sub5\n0   101     Rahul   78    85    90    88    76\n1   102     Priya   92    89    95    87    91\n2   103     Amit    75    80    78    82    79\n3   104     Neha    88    90    85    92    89\n4   105     Karan   81    84    79    86    88\n5   106     Riya    90    91    93    89    92\n6   107     Mohit   72    75    70    78    74\n7   108     Anjali  85    87    89    84    86\n8   109     Vivek   80    82    81    83    85\n9   110     Pooja   94    96    95    97    93\n"
+        }
+      ],
+      "execution_count": 3
+    },
+    {
+      "id": "9823b0b7-2606-4ce2-a7f6-5715ced4bc31",
+      "cell_type": "code",
+      "source": "import numpy as np\nimport pandas as pd\n\n\ndata = np.random.randint(1, 101, size=(100, 50))\ncolumns = [f\"Col_{i+1}\" for i in range(50)]\n\ndf = pd.DataFrame(data, columns=columns)\n\ndf.to_csv(\"data_integers_100x50.csv\", index=False)\nprint(\"File saved with shape:\", df.shape)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "File saved with shape: (100, 50)\n"
+        }
+      ],
+      "execution_count": 3
+    },
+    {
+      "id": "31bc1d62-3d97-4f51-b8d9-20ede9b442f0",
+      "cell_type": "code",
+      "source": "import pandas as pd\ndf = pd.read_csv(\"record.csv\")\nprint(df)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "  RollNo  Name    Sub1  Sub2  Sub3  Sub4  Sub5\n0   101     Rahul   78    85    90    88    76\n1   102     Priya   92    89    95    87    91\n2   103     Amit    75    80    78    82    79\n3   104     Neha    88    90    85    92    89\n4   105     Karan   81    84    79    86    88\n5   106     Riya    90    91    93    89    92\n6   107     Mohit   72    75    70    78    74\n7   108     Anjali  85    87    89    84    86\n8   109     Vivek   80    82    81    83    85\n9   110     Pooja   94    96    95    97    93\n"
+        }
+      ],
+      "execution_count": 4
+    },
+    {
+      "id": "56e50166-d69c-4067-ae49-f1bf324a453b",
+      "cell_type": "code",
+      "source": "df.head(2)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 5,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "  RollNo  Name    Sub1  Sub2  Sub3  Sub4  Sub5\n0   101     Rahul   78    85    90    88    76\n1   102     Priya   92    89    95    87    91",
+            "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>RollNo&nbsp;&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;Sub1&nbsp;&nbsp;Sub2&nbsp;&nbsp;Sub3&nbsp;&nbsp;Sub4&nbsp;&nbsp;Sub5</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>101&nbsp;&nbsp;&nbsp;&nbsp; Rahul&nbsp;&nbsp; 78&nbsp;&nbsp;&nbsp;&nbsp;85&nbsp;&nbsp;&nbsp;&nbsp;90&nbsp;&nbsp;&nbsp;&nbsp;88&nbsp;&nbsp;&nbsp;&nbsp;76</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>102&nbsp;&nbsp;&nbsp;&nbsp; Priya&nbsp;&nbsp; 92&nbsp;&nbsp;&nbsp;&nbsp;89&nbsp;&nbsp;&nbsp;&nbsp;95&nbsp;&nbsp;&nbsp;&nbsp;87&nbsp;&nbsp;&nbsp;&nbsp;91</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 5
+    },
+    {
+      "id": "2bd1482e-f504-401e-82cd-dcfccfb0d033",
+      "cell_type": "code",
+      "source": "df.shape",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 6,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "(10, 1)"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 6
+    },
+    {
+      "id": "f3dccbaf-4c46-4511-a02a-53238470ce10",
+      "cell_type": "code",
+      "source": "import pandas as pd\ndf = pd.read_csv(\"record1.csv\")\nprint(df)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "    Col_1  Col_2  Col_3  Col_4  Col_5  Col_6  Col_7  Col_8  Col_9  Col_10  \\\n0      52     51     17     62     55     44      5     87     99      42   \n1      32     47     48     69     21     86     18     44     41      50   \n2      10      8     72    100     20     96     27     49     68      62   \n3      72     45     61      9      5     72     43     88     81       8   \n4      52     20     21     79     92     73     90     77     43      98   \n..    ...    ...    ...    ...    ...    ...    ...    ...    ...     ...   \n95      3     60    100     89     59     21     38     36      8      92   \n96     95     31      4     35     68     28     21     96     20      49   \n97     99     14     77     92     99     71     14     74     97      38   \n98     26     99     94     29      8      6     12      3     44      85   \n99     58     55     49     55      2     79     38     85     53      46   \n\n    ...  Col_41  Col_42  Col_43  Col_44  Col_45  Col_46  Col_47  Col_48  \\\n0   ...      86      30      32      76      57      25      57      17   \n1   ...      94      32      99      92      67      40      95       7   \n2   ...      89      11      82      46      52      98      94      84   \n3   ...      10      82      10      57      49      78      19      48   \n4   ...      90      19      50      76      34      43      13      86   \n..  ...     ...     ...     ...     ...     ...     ...     ...     ...   \n95  ...      80      35      12      53      14      67      51      57   \n96  ...      86      44      32      72      10      21      49      96   \n97  ...      55      10      89      23      88      90      61      72   \n98  ...      91      24      42       2      27      81      22       2   \n99  ...       9      76      67      27      48      65      63      96   \n\n    Col_49  Col_50  \n0       36      47  \n1       57      97  \n2       39      88  \n3       35      34  \n4       57      51  \n..     ...     ...  \n95      84      93  \n96      79       6  \n97      51      88  \n98      27      89  \n99      52      69  \n\n[100 rows x 50 columns]\n"
+        }
+      ],
+      "execution_count": 8
+    },
+    {
+      "id": "e179a1f1-5fd5-4a6b-9f22-8f708139eff6",
+      "cell_type": "code",
+      "source": "df.head(4)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 9,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "   Col_1  Col_2  Col_3  Col_4  Col_5  Col_6  Col_7  Col_8  Col_9  Col_10  ...  \\\n0     52     51     17     62     55     44      5     87     99      42  ...   \n1     32     47     48     69     21     86     18     44     41      50  ...   \n2     10      8     72    100     20     96     27     49     68      62  ...   \n3     72     45     61      9      5     72     43     88     81       8  ...   \n\n   Col_41  Col_42  Col_43  Col_44  Col_45  Col_46  Col_47  Col_48  Col_49  \\\n0      86      30      32      76      57      25      57      17      36   \n1      94      32      99      92      67      40      95       7      57   \n2      89      11      82      46      52      98      94      84      39   \n3      10      82      10      57      49      78      19      48      35   \n\n   Col_50  \n0      47  \n1      97  \n2      88  \n3      34  \n\n[4 rows x 50 columns]",
+            "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Col_1</th>\n      <th>Col_2</th>\n      <th>Col_3</th>\n      <th>Col_4</th>\n      <th>Col_5</th>\n      <th>Col_6</th>\n      <th>Col_7</th>\n      <th>Col_8</th>\n      <th>Col_9</th>\n      <th>Col_10</th>\n      <th>...</th>\n      <th>Col_41</th>\n      <th>Col_42</th>\n      <th>Col_43</th>\n      <th>Col_44</th>\n      <th>Col_45</th>\n      <th>Col_46</th>\n      <th>Col_47</th>\n      <th>Col_48</th>\n      <th>Col_49</th>\n      <th>Col_50</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>52</td>\n      <td>51</td>\n      <td>17</td>\n      <td>62</td>\n      <td>55</td>\n      <td>44</td>\n      <td>5</td>\n      <td>87</td>\n      <td>99</td>\n      <td>42</td>\n      <td>...</td>\n      <td>86</td>\n      <td>30</td>\n      <td>32</td>\n      <td>76</td>\n      <td>57</td>\n      <td>25</td>\n      <td>57</td>\n      <td>17</td>\n      <td>36</td>\n      <td>47</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>32</td>\n      <td>47</td>\n      <td>48</td>\n      <td>69</td>\n      <td>21</td>\n      <td>86</td>\n      <td>18</td>\n      <td>44</td>\n      <td>41</td>\n      <td>50</td>\n      <td>...</td>\n      <td>94</td>\n      <td>32</td>\n      <td>99</td>\n      <td>92</td>\n      <td>67</td>\n      <td>40</td>\n      <td>95</td>\n      <td>7</td>\n      <td>57</td>\n      <td>97</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>10</td>\n      <td>8</td>\n      <td>72</td>\n      <td>100</td>\n      <td>20</td>\n      <td>96</td>\n      <td>27</td>\n      <td>49</td>\n      <td>68</td>\n      <td>62</td>\n      <td>...</td>\n      <td>89</td>\n      <td>11</td>\n      <td>82</td>\n      <td>46</td>\n      <td>52</td>\n      <td>98</td>\n      <td>94</td>\n      <td>84</td>\n      <td>39</td>\n      <td>88</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>72</td>\n      <td>45</td>\n      <td>61</td>\n      <td>9</td>\n      <td>5</td>\n      <td>72</td>\n      <td>43</td>\n      <td>88</td>\n      <td>81</td>\n      <td>8</td>\n      <td>...</td>\n      <td>10</td>\n      <td>82</td>\n      <td>10</td>\n      <td>57</td>\n      <td>49</td>\n      <td>78</td>\n      <td>19</td>\n      <td>48</td>\n      <td>35</td>\n      <td>34</td>\n    </tr>\n  </tbody>\n</table>\n<p>4 rows × 50 columns</p>\n</div>"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 9
+    },
+    {
+      "id": "16a97488-5b67-4eba-ab1f-ad70954b9082",
+      "cell_type": "code",
+      "source": "df.shape",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 10,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "(100, 50)"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 10
+    },
+    {
+      "id": "6523e4fb-dd49-4ca1-a054-68b82e1e5bb3",
+      "cell_type": "code",
+      "source": "print(df.columns)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "Index(['Col_1', 'Col_2', 'Col_3', 'Col_4', 'Col_5', 'Col_6', 'Col_7', 'Col_8',\n       'Col_9', 'Col_10', 'Col_11', 'Col_12', 'Col_13', 'Col_14', 'Col_15',\n       'Col_16', 'Col_17', 'Col_18', 'Col_19', 'Col_20', 'Col_21', 'Col_22',\n       'Col_23', 'Col_24', 'Col_25', 'Col_26', 'Col_27', 'Col_28', 'Col_29',\n       'Col_30', 'Col_31', 'Col_32', 'Col_33', 'Col_34', 'Col_35', 'Col_36',\n       'Col_37', 'Col_38', 'Col_39', 'Col_40', 'Col_41', 'Col_42', 'Col_43',\n       'Col_44', 'Col_45', 'Col_46', 'Col_47', 'Col_48', 'Col_49', 'Col_50'],\n      dtype='str')\n"
+        }
+      ],
+      "execution_count": 11
+    },
+    {
+      "id": "5857dd45-a9bf-403b-9e81-a176e2c19d55",
+      "cell_type": "code",
+      "source": "print(df.index )",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "RangeIndex(start=0, stop=100, step=1)\n"
+        }
+      ],
+      "execution_count": 15
+    },
+    {
+      "id": "ad49c538-20ec-4c26-90f0-5ab8a27f5546",
+      "cell_type": "code",
+      "source": "print(df.info)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "<bound method DataFrame.info of     Col_1  Col_2  Col_3  Col_4  Col_5  Col_6  Col_7  Col_8  Col_9  Col_10  \\\n0      52     51     17     62     55     44      5     87     99      42   \n1      32     47     48     69     21     86     18     44     41      50   \n2      10      8     72    100     20     96     27     49     68      62   \n3      72     45     61      9      5     72     43     88     81       8   \n4      52     20     21     79     92     73     90     77     43      98   \n..    ...    ...    ...    ...    ...    ...    ...    ...    ...     ...   \n95      3     60    100     89     59     21     38     36      8      92   \n96     95     31      4     35     68     28     21     96     20      49   \n97     99     14     77     92     99     71     14     74     97      38   \n98     26     99     94     29      8      6     12      3     44      85   \n99     58     55     49     55      2     79     38     85     53      46   \n\n    ...  Col_41  Col_42  Col_43  Col_44  Col_45  Col_46  Col_47  Col_48  \\\n0   ...      86      30      32      76      57      25      57      17   \n1   ...      94      32      99      92      67      40      95       7   \n2   ...      89      11      82      46      52      98      94      84   \n3   ...      10      82      10      57      49      78      19      48   \n4   ...      90      19      50      76      34      43      13      86   \n..  ...     ...     ...     ...     ...     ...     ...     ...     ...   \n95  ...      80      35      12      53      14      67      51      57   \n96  ...      86      44      32      72      10      21      49      96   \n97  ...      55      10      89      23      88      90      61      72   \n98  ...      91      24      42       2      27      81      22       2   \n99  ...       9      76      67      27      48      65      63      96   \n\n    Col_49  Col_50  \n0       36      47  \n1       57      97  \n2       39      88  \n3       35      34  \n4       57      51  \n..     ...     ...  \n95      84      93  \n96      79       6  \n97      51      88  \n98      27      89  \n99      52      69  \n\n[100 rows x 50 columns]>\n"
+        }
+      ],
+      "execution_count": 16
+    },
+    {
+      "id": "e9392410-f3eb-4fec-b4c9-78cb9fa40915",
+      "cell_type": "code",
+      "source": "print(df.describe())",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "            Col_1       Col_2       Col_3       Col_4       Col_5       Col_6  \\\ncount  100.000000  100.000000  100.000000  100.000000  100.000000  100.000000   \nmean    53.940000   49.390000   53.710000   53.840000   52.450000   53.560000   \nstd     29.717124   28.621139   31.755154   27.997374   31.169583   29.765521   \nmin      1.000000    1.000000    3.000000    2.000000    1.000000    1.000000   \n25%     26.750000   25.000000   24.750000   30.750000   25.750000   27.500000   \n50%     56.500000   45.500000   52.500000   53.000000   55.000000   57.000000   \n75%     80.250000   73.750000   85.250000   78.250000   78.250000   78.250000   \nmax    100.000000  100.000000  100.000000  100.000000  100.000000  100.000000   \n\n            Col_7       Col_8       Col_9      Col_10  ...      Col_41  \\\ncount  100.000000  100.000000  100.000000  100.000000  ...  100.000000   \nmean    50.940000   51.030000   53.370000   54.360000  ...   54.670000   \nstd     29.737172   28.028288   27.972084   27.273593  ...   30.462116   \nmin      5.000000    3.000000    4.000000    4.000000  ...    2.000000   \n25%     24.750000   24.750000   28.000000   33.750000  ...   27.000000   \n50%     48.500000   53.000000   54.000000   51.500000  ...   55.500000   \n75%     78.000000   73.250000   76.750000   78.250000  ...   85.250000   \nmax    100.000000  100.000000  100.000000   98.000000  ...  100.000000   \n\n           Col_42      Col_43      Col_44      Col_45     Col_46      Col_47  \\\ncount  100.000000  100.000000  100.000000  100.000000  100.00000  100.000000   \nmean    51.900000   54.200000   49.000000   52.330000   52.06000   50.390000   \nstd     29.926341   26.813234   31.606482   29.519059   29.17063   30.458415   \nmin      2.000000    1.000000    2.000000    2.000000    1.00000    1.000000   \n25%     25.500000   33.750000   17.500000   27.000000   25.00000   21.500000   \n50%     53.500000   53.500000   49.000000   52.500000   57.50000   50.500000   \n75%     76.000000   76.750000   76.000000   77.000000   73.25000   75.500000   \nmax    100.000000  100.000000  100.000000  100.000000   99.00000  100.000000   \n\n          Col_48      Col_49      Col_50  \ncount  100.00000  100.000000  100.000000  \nmean    53.01000   50.230000   50.810000  \nstd     30.15733   27.773199   28.143103  \nmin      1.00000    2.000000    1.000000  \n25%     23.75000   27.000000   28.750000  \n50%     59.00000   47.000000   52.000000  \n75%     79.25000   72.250000   74.250000  \nmax    100.00000  100.000000  100.000000  \n\n[8 rows x 50 columns]\n"
+        }
+      ],
+      "execution_count": 17
+    },
+    {
+      "id": "90330be7-d20e-499d-a885-af3dc437e9c4",
+      "cell_type": "code",
+      "source": "import pandas as pd\n\ndata = {\n    \"ID\": list(range(101, 121)),\n    \"Name\": [\n        \"Alice\", \"Bob\", \"Charlie\", \"David\", \"Eva\",\n        \"Frank\", \"Grace\", \"Henry\", \"Ivy\", \"Jack\",\n        \"Karen\", \"Leo\", \"Mona\", \"Nathan\", \"Olivia\",\n        \"Paul\", \"Quinn\", \"Rachel\", \"Steve\", \"Tina\"\n    ],\n    \"Department\": [\n        \"HR\", \"IT\", \"Finance\", \"IT\", \"Marketing\",\n        \"IT\", \"HR\", \"Finance\", \"Marketing\", \"IT\",\n        \"Finance\", \"HR\", \"IT\", \"Marketing\", \"HR\",\n        \"Finance\", \"IT\", \"Marketing\", \"HR\", \"Finance\"\n    ],\n    \"Salary\": [\n        55000, 72000, 68000, 75000, 50000,\n        71000, 54000, 69000, 52000, 73000,\n        67000, 56000, 74000, 51000, 58000,\n        70000, 76000, 53000, 59000, 66000\n    ]\n}\n\ndf = pd.DataFrame(data)\nprint(df)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "     ID     Name Department  Salary\n0   101    Alice         HR   55000\n1   102      Bob         IT   72000\n2   103  Charlie    Finance   68000\n3   104    David         IT   75000\n4   105      Eva  Marketing   50000\n5   106    Frank         IT   71000\n6   107    Grace         HR   54000\n7   108    Henry    Finance   69000\n8   109      Ivy  Marketing   52000\n9   110     Jack         IT   73000\n10  111    Karen    Finance   67000\n11  112      Leo         HR   56000\n12  113     Mona         IT   74000\n13  114   Nathan  Marketing   51000\n14  115   Olivia         HR   58000\n15  116     Paul    Finance   70000\n16  117    Quinn         IT   76000\n17  118   Rachel  Marketing   53000\n18  119    Steve         HR   59000\n19  120     Tina    Finance   66000\n"
+        }
+      ],
+      "execution_count": 1
+    },
+    {
+      "id": "0a32e638-eb04-4f98-a055-6c346ad7b114",
+      "cell_type": "code",
+      "source": "print(df[\"Name\"])",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "0       Alice\n1         Bob\n2     Charlie\n3       David\n4         Eva\n5       Frank\n6       Grace\n7       Henry\n8         Ivy\n9        Jack\n10      Karen\n11        Leo\n12       Mona\n13     Nathan\n14     Olivia\n15       Paul\n16      Quinn\n17     Rachel\n18      Steve\n19       Tina\nName: Name, dtype: str\n"
+        }
+      ],
+      "execution_count": 3
+    },
+    {
+      "id": "08102baf-f584-4090-a33c-84e3d0858388",
+      "cell_type": "code",
+      "source": "print(df[\"Salary\"])",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "0     55000\n1     72000\n2     68000\n3     75000\n4     50000\n5     71000\n6     54000\n7     69000\n8     52000\n9     73000\n10    67000\n11    56000\n12    74000\n13    51000\n14    58000\n15    70000\n16    76000\n17    53000\n18    59000\n19    66000\nName: Salary, dtype: int64\n"
+        }
+      ],
+      "execution_count": 4
+    },
+    {
+      "id": "f25270e5-5b89-4ccb-82c4-c368914b1184",
+      "cell_type": "code",
+      "source": "print(df.loc[0])",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "ID              101\nName          Alice\nDepartment       HR\nSalary        55000\nName: 0, dtype: object\n"
+        }
+      ],
+      "execution_count": 5
+    },
+    {
+      "id": "f38cfaec-f6a5-476e-9f62-1e4b83efa006",
+      "cell_type": "code",
+      "source": "print(df.iloc[1])",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "ID              102\nName            Bob\nDepartment       IT\nSalary        72000\nName: 1, dtype: object\n"
+        }
+      ],
+      "execution_count": 6
+    },
+    {
+      "id": "a039eed4-bd85-4728-b9d2-a06fc0fc0d40",
+      "cell_type": "code",
+      "source": "print(df.iloc[3])",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "ID              104\nName          David\nDepartment       IT\nSalary        75000\nName: 3, dtype: object\n"
+        }
+      ],
+      "execution_count": 7
+    },
+    {
+      "id": "922a2d05-4bbe-4f5f-886c-7f5a286d1f66",
+      "cell_type": "code",
+      "source": "import pandas as pd\n\ndata = {\n    \"ID\": list(range(101, 121)),\n    \"Name\": [\n        \"Alice\", \"Bob\", \"Charlie\", \"David\", \"Eva\",\n        \"Frank\", \"Grace\", \"Henry\", \"Ivy\", \"Jack\",\n        \"Karen\", \"Leo\", \"Mona\", \"Nathan\", \"Olivia\",\n        \"Paul\", \"Quinn\", \"Rachel\", \"Steve\", \"Tina\"\n    ],\n    \"Department\": [\n        \"HR\", \"IT\", \"Finance\", \"IT\", \"Marketing\",\n        \"IT\", \"HR\", \"Finance\", \"Marketing\", \"IT\",\n        \"Finance\", \"HR\", \"IT\", \"Marketing\", \"HR\",\n        \"Finance\", \"IT\", \"Marketing\", \"HR\", \"Finance\"\n    ],\n    \"Salary\": [\n        55000, 72000, 68000, 75000, 50000,\n        71000, 54000, 69000, 52000, 73000,\n        67000, 56000, 74000, 51000, 58000,\n        70000, 76000, 53000, 59000, 66000\n    ]\n}\n\ndf = pd.DataFrame(data)\nprint(df)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "     ID     Name Department  Salary\n0   101    Alice         HR   55000\n1   102      Bob         IT   72000\n2   103  Charlie    Finance   68000\n3   104    David         IT   75000\n4   105      Eva  Marketing   50000\n5   106    Frank         IT   71000\n6   107    Grace         HR   54000\n7   108    Henry    Finance   69000\n8   109      Ivy  Marketing   52000\n9   110     Jack         IT   73000\n10  111    Karen    Finance   67000\n11  112      Leo         HR   56000\n12  113     Mona         IT   74000\n13  114   Nathan  Marketing   51000\n14  115   Olivia         HR   58000\n15  116     Paul    Finance   70000\n16  117    Quinn         IT   76000\n17  118   Rachel  Marketing   53000\n18  119    Steve         HR   59000\n19  120     Tina    Finance   66000\n"
+        }
+      ],
+      "execution_count": 8
+    },
+    {
+      "id": "368e0e1a-1506-47a6-863e-df7bdbee5da5",
+      "cell_type": "code",
+      "source": "print(df.iloc[7])",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "ID                108\nName            Henry\nDepartment    Finance\nSalary          69000\nName: 7, dtype: object\n"
+        }
+      ],
+      "execution_count": 9
+    },
+    {
+      "id": "2124ce64-5ae5-4e28-b982-5780c0ee4fb7",
+      "cell_type": "code",
+      "source": "print(df.iloc[9])",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "ID              110\nName           Jack\nDepartment       IT\nSalary        73000\nName: 9, dtype: object\n"
+        }
+      ],
+      "execution_count": 10
+    },
+    {
+      "id": "aacbd162-a27d-418f-85fb-00549eaea1aa",
+      "cell_type": "code",
+      "source": "print(df.iloc[15])",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "ID                116\nName             Paul\nDepartment    Finance\nSalary          70000\nName: 15, dtype: object\n"
+        }
+      ],
+      "execution_count": 11
+    },
+    {
+      "id": "2bcc9cbb-dc4d-471f-a3e6-04c4642b9ea2",
+      "cell_type": "code",
+      "source": "import pandas as pd\ndf [\"Bonus\"] = 5000",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "ename": "<class 'NameError'>",
+          "evalue": "name 'df' is not defined",
+          "traceback": [
+            "\u001b[31m---------------------------------------------------------------------------\u001b[39m",
+            "\u001b[31mNameError\u001b[39m                                 Traceback (most recent call last)",
+            "\u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[5]\u001b[39m\u001b[32m, line 2\u001b[39m\n\u001b[32m      1\u001b[39m \u001b[38;5;28;01mimport\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[34;01mpandas\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;28;01mas\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[34;01mpd\u001b[39;00m\n\u001b[32m----> \u001b[39m\u001b[32m2\u001b[39m \u001b[43mdf\u001b[49m [\u001b[33m\"\u001b[39m\u001b[33mBonus\u001b[39m\u001b[33m\"\u001b[39m] = \u001b[32m5000\u001b[39m\n",
+            "\u001b[31mNameError\u001b[39m: name 'df' is not defined"
+          ],
+          "output_type": "error"
+        }
+      ],
+      "execution_count": 5
+    },
+    {
+      "id": "828380cd-4b9a-43b6-9076-a8edfd7495fd",
+      "cell_type": "code",
+      "source": "import pandas as pd\n\ndata = {\n    \"ID\": list(range(101, 121)),\n    \"Name\": [\n        \"Alice\", \"Bob\", \"Charlie\", \"David\", \"Eva\",\n        \"Frank\", \"Grace\", \"Henry\", \"Ivy\", \"Jack\",\n        \"Karen\", \"Leo\", \"Mona\", \"Nathan\", \"Olivia\",\n        \"Paul\", \"Quinn\", \"Rachel\", \"Steve\", \"Tina\"\n    ],\n    \"Department\": [\n        \"HR\", \"IT\", \"Finance\", \"IT\", \"Marketing\",\n        \"IT\", \"HR\", \"Finance\", \"Marketing\", \"IT\",\n        \"Finance\", \"HR\", \"IT\", \"Marketing\", \"HR\",\n        \"Finance\", \"IT\", \"Marketing\", \"HR\", \"Finance\"\n    ],\n    \"Salary\": [\n        55000, 72000, 68000, 75000, 50000,\n        71000, 54000, 69000, 52000, 73000,\n        67000, 56000, 74000, 51000, 58000,\n        70000, 76000, 53000, 59000, 66000\n    ]\n}\n\ndf = pd.DataFrame(data)\nprint(df)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "     ID     Name Department  Salary\n0   101    Alice         HR   55000\n1   102      Bob         IT   72000\n2   103  Charlie    Finance   68000\n3   104    David         IT   75000\n4   105      Eva  Marketing   50000\n5   106    Frank         IT   71000\n6   107    Grace         HR   54000\n7   108    Henry    Finance   69000\n8   109      Ivy  Marketing   52000\n9   110     Jack         IT   73000\n10  111    Karen    Finance   67000\n11  112      Leo         HR   56000\n12  113     Mona         IT   74000\n13  114   Nathan  Marketing   51000\n14  115   Olivia         HR   58000\n15  116     Paul    Finance   70000\n16  117    Quinn         IT   76000\n17  118   Rachel  Marketing   53000\n18  119    Steve         HR   59000\n19  120     Tina    Finance   66000\n"
+        }
+      ],
+      "execution_count": 7
+    },
+    {
+      "id": "388b64fe-3f0e-471a-95e0-b6b3e48fbfbf",
+      "cell_type": "code",
+      "source": "import numpy as np\n\ndf[\"Bonus\"] = np.random.randint(0,5000,size=len(df))\ndf[\"Total\"] = df[\"Salary\"]+df[\"Bonus\"]\n\nprint(df.head())",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "    ID     Name Department  Salary  Bonus  Total\n0  101    Alice         HR   55000   2848  57848\n1  102      Bob         IT   72000   4501  76501\n2  103  Charlie    Finance   68000    741  68741\n3  104    David         IT   75000   4932  79932\n4  105      Eva  Marketing   50000   3913  53913\n"
+        }
+      ],
+      "execution_count": 9
+    },
+    {
+      "id": "1aedf30f-4bc1-43ae-b3e3-efb58271199e",
+      "cell_type": "code",
+      "source": "import pandas as pd\n\ndata = {\"Salary\":[50000,60000,70000]}\ndf = pd.DataFrame(data)\n\ndf[\"Bonus\"] = 5000\ndf[\"Total\"] = df[\"Salary\"]+ df[\"Bonus\"]\n\ndf = df.drop(\"Bonus\",axis=1)\nprint(df)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "   Salary  Total\n0   50000  55000\n1   60000  65000\n2   70000  75000\n"
+        }
+      ],
+      "execution_count": 10
+    },
+    {
+      "id": "cd3f1206-d08d-4cdf-ae03-d00c04ec6630",
+      "cell_type": "code",
+      "source": "df = pd.read_csv(\"record.csv\")\nprint(df)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "  RollNo  Name    Sub1  Sub2  Sub3  Sub4  Sub5\n0   101     Rahul   78    85    90    88    76\n1   102     Priya   92    89    95    87    91\n2   103     Amit    75    80    78    82    79\n3   104     Neha    88    90    85    92    89\n4   105     Karan   81    84    79    86    88\n5   106     Riya    90    91    93    89    92\n6   107     Mohit   72    75    70    78    74\n7   108     Anjali  85    87    89    84    86\n8   109     Vivek   80    82    81    83    85\n9   110     Pooja   94    96    95    97    93\n"
+        }
+      ],
+      "execution_count": 11
+    },
+    {
+      "id": "98ed6aaf-d2b5-475f-b401-c30d3d5efc75",
+      "cell_type": "code",
+      "source": "df.head(4)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 12,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "  RollNo  Name    Sub1  Sub2  Sub3  Sub4  Sub5\n0   101     Rahul   78    85    90    88    76\n1   102     Priya   92    89    95    87    91\n2   103     Amit    75    80    78    82    79\n3   104     Neha    88    90    85    92    89",
+            "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>RollNo&nbsp;&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;Sub1&nbsp;&nbsp;Sub2&nbsp;&nbsp;Sub3&nbsp;&nbsp;Sub4&nbsp;&nbsp;Sub5</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>101&nbsp;&nbsp;&nbsp;&nbsp; Rahul&nbsp;&nbsp; 78&nbsp;&nbsp;&nbsp;&nbsp;85&nbsp;&nbsp;&nbsp;&nbsp;90&nbsp;&nbsp;&nbsp;&nbsp;88&nbsp;&nbsp;&nbsp;&nbsp;76</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>102&nbsp;&nbsp;&nbsp;&nbsp; Priya&nbsp;&nbsp; 92&nbsp;&nbsp;&nbsp;&nbsp;89&nbsp;&nbsp;&nbsp;&nbsp;95&nbsp;&nbsp;&nbsp;&nbsp;87&nbsp;&nbsp;&nbsp;&nbsp;91</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>103&nbsp;&nbsp;&nbsp;&nbsp; Amit&nbsp;&nbsp;&nbsp;&nbsp;75&nbsp;&nbsp;&nbsp;&nbsp;80&nbsp;&nbsp;&nbsp;&nbsp;78&nbsp;&nbsp;&nbsp;&nbsp;82&nbsp;&nbsp;&nbsp;&nbsp;79</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>104&nbsp;&nbsp;&nbsp;&nbsp; Neha&nbsp;&nbsp;&nbsp;&nbsp;88&nbsp;&nbsp;&nbsp;&nbsp;90&nbsp;&nbsp;&nbsp;&nbsp;85&nbsp;&nbsp;&nbsp;&nbsp;92&nbsp;&nbsp;&nbsp;&nbsp;89</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 12
+    },
+    {
+      "id": "5f2a3f64-568f-47c9-99b5-06ddef794103",
+      "cell_type": "code",
+      "source": "df.tail(5)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 13,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "  RollNo  Name    Sub1  Sub2  Sub3  Sub4  Sub5\n5   106     Riya    90    91    93    89    92\n6   107     Mohit   72    75    70    78    74\n7   108     Anjali  85    87    89    84    86\n8   109     Vivek   80    82    81    83    85\n9   110     Pooja   94    96    95    97    93",
+            "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>RollNo&nbsp;&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;Sub1&nbsp;&nbsp;Sub2&nbsp;&nbsp;Sub3&nbsp;&nbsp;Sub4&nbsp;&nbsp;Sub5</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>5</th>\n      <td>106&nbsp;&nbsp;&nbsp;&nbsp; Riya&nbsp;&nbsp;&nbsp;&nbsp;90&nbsp;&nbsp;&nbsp;&nbsp;91&nbsp;&nbsp;&nbsp;&nbsp;93&nbsp;&nbsp;&nbsp;&nbsp;89&nbsp;&nbsp;&nbsp;&nbsp;92</td>\n    </tr>\n    <tr>\n      <th>6</th>\n      <td>107&nbsp;&nbsp;&nbsp;&nbsp; Mohit&nbsp;&nbsp; 72&nbsp;&nbsp;&nbsp;&nbsp;75&nbsp;&nbsp;&nbsp;&nbsp;70&nbsp;&nbsp;&nbsp;&nbsp;78&nbsp;&nbsp;&nbsp;&nbsp;74</td>\n    </tr>\n    <tr>\n      <th>7</th>\n      <td>108&nbsp;&nbsp;&nbsp;&nbsp; Anjali&nbsp;&nbsp;85&nbsp;&nbsp;&nbsp;&nbsp;87&nbsp;&nbsp;&nbsp;&nbsp;89&nbsp;&nbsp;&nbsp;&nbsp;84&nbsp;&nbsp;&nbsp;&nbsp;86</td>\n    </tr>\n    <tr>\n      <th>8</th>\n      <td>109&nbsp;&nbsp;&nbsp;&nbsp; Vivek&nbsp;&nbsp; 80&nbsp;&nbsp;&nbsp;&nbsp;82&nbsp;&nbsp;&nbsp;&nbsp;81&nbsp;&nbsp;&nbsp;&nbsp;83&nbsp;&nbsp;&nbsp;&nbsp;85</td>\n    </tr>\n    <tr>\n      <th>9</th>\n      <td>110&nbsp;&nbsp;&nbsp;&nbsp; Pooja&nbsp;&nbsp; 94&nbsp;&nbsp;&nbsp;&nbsp;96&nbsp;&nbsp;&nbsp;&nbsp;95&nbsp;&nbsp;&nbsp;&nbsp;97&nbsp;&nbsp;&nbsp;&nbsp;93</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 13
+    },
+    {
+      "id": "ab5d052c-7d29-4bbd-9084-f9b3869366c4",
+      "cell_type": "code",
+      "source": "import pandas as pd\n\n\ndata = {\n    \"Name\": [\"Alice\", \"Bob\", \"Charlie\", \"David\", \"Eva\", \"Frank\", \"Grace\", \"Henry\"],\n    \"Department\": [\"HR\", \"IT\", \"Finance\", \"Marketing\", \"HR\", \"IT\", \"Finance\", \"Marketing\"],\n    \"Salary\": [55000, 75000, 68000, 52000, 58000, 72000, 70000, 54000],\n    \"Location\": [\"New York\", \"San Francisco\", \"Chicago\", \"Austin\", \"New York\", \"San Francisco\", \"Chicago\", \"Austin\"]\n}\n\n\ndf = pd.DataFrame(data)\nprint(df)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "      Name Department  Salary       Location\n0    Alice         HR   55000       New York\n1      Bob         IT   75000  San Francisco\n2  Charlie    Finance   68000        Chicago\n3    David  Marketing   52000         Austin\n4      Eva         HR   58000       New York\n5    Frank         IT   72000  San Francisco\n6    Grace    Finance   70000        Chicago\n7    Henry  Marketing   54000         Austin\n"
+        }
+      ],
+      "execution_count": 16
+    },
+    {
+      "id": "da1bae69-d736-4c81-a077-41f30ddbe272",
+      "cell_type": "code",
+      "source": "print(df.head(5))\nprint(df)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "      Name Department  Salary       Location\n0    Alice         HR   55000       New York\n1      Bob         IT   75000  San Francisco\n2  Charlie    Finance   68000        Chicago\n3    David  Marketing   52000         Austin\n4      Eva         HR   58000       New York\n      Name Department  Salary       Location\n0    Alice         HR   55000       New York\n1      Bob         IT   75000  San Francisco\n2  Charlie    Finance   68000        Chicago\n3    David  Marketing   52000         Austin\n4      Eva         HR   58000       New York\n5    Frank         IT   72000  San Francisco\n6    Grace    Finance   70000        Chicago\n7    Henry  Marketing   54000         Austin\n"
+        }
+      ],
+      "execution_count": 19
+    },
+    {
+      "id": "c7dc9c74-f670-4c18-a771-6272b1c51992",
+      "cell_type": "code",
+      "source": "print(df.describe)\nprint(df)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "<bound method NDFrame.describe of       Name Department  Salary       Location\n0    Alice         HR   55000       New York\n1      Bob         IT   75000  San Francisco\n2  Charlie    Finance   68000        Chicago\n3    David  Marketing   52000         Austin\n4      Eva         HR   58000       New York\n5    Frank         IT   72000  San Francisco\n6    Grace    Finance   70000        Chicago\n7    Henry  Marketing   54000         Austin>\n      Name Department  Salary       Location\n0    Alice         HR   55000       New York\n1      Bob         IT   75000  San Francisco\n2  Charlie    Finance   68000        Chicago\n3    David  Marketing   52000         Austin\n4      Eva         HR   58000       New York\n5    Frank         IT   72000  San Francisco\n6    Grace    Finance   70000        Chicago\n7    Henry  Marketing   54000         Austin\n"
+        }
+      ],
+      "execution_count": 20
+    },
+    {
+      "id": "9dd74482-1f9b-4fbd-ba0d-38ad9ca2e6ea",
+      "cell_type": "code",
+      "source": "(df.tail(2))",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 21,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "    Name Department  Salary Location\n6  Grace    Finance   70000  Chicago\n7  Henry  Marketing   54000   Austin",
+            "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Name</th>\n      <th>Department</th>\n      <th>Salary</th>\n      <th>Location</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>6</th>\n      <td>Grace</td>\n      <td>Finance</td>\n      <td>70000</td>\n      <td>Chicago</td>\n    </tr>\n    <tr>\n      <th>7</th>\n      <td>Henry</td>\n      <td>Marketing</td>\n      <td>54000</td>\n      <td>Austin</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 21
+    },
+    {
+      "id": "a6923aa6-efec-42d6-a00c-dbef34f594c9",
+      "cell_type": "code",
+      "source": "(df.info())",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "<class 'pandas.DataFrame'>\nRangeIndex: 8 entries, 0 to 7\nData columns (total 4 columns):\n #   Column      Non-Null Count  Dtype\n---  ------      --------------  -----\n 0   Name        8 non-null      str  \n 1   Department  8 non-null      str  \n 2   Salary      8 non-null      int64\n 3   Location    8 non-null      str  \ndtypes: int64(1), str(3)\nmemory usage: 232.0 bytes\n"
+        }
+      ],
+      "execution_count": 22
+    },
+    {
+      "id": "ea72ddef-c760-4061-8677-35c0f76478e1",
+      "cell_type": "code",
+      "source": "(df.iloc[5])",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 23,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "Name                  Frank\nDepartment               IT\nSalary                72000\nLocation      San Francisco\nName: 5, dtype: object"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 23
+    },
+    {
+      "id": "e65ff709-febb-4263-ad38-63f2ef964d75",
+      "cell_type": "code",
+      "source": "(df.index)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 26,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "RangeIndex(start=0, stop=8, step=1)"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 26
+    },
+    {
+      "id": "d698c1d5-e9b4-4fee-8610-d1cec8aff41d",
+      "cell_type": "code",
+      "source": "(df.shape)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 27,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "(8, 4)"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 27
+    },
+    {
+      "id": "3b4f9a28-40bc-4a63-a070-c076d516c3a6",
+      "cell_type": "code",
+      "source": "total_salary = df.groupby(\"Department\")[\"Salary\"].sum()\nprint(total_salary[\"HR\"])",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "113000\n"
+        }
+      ],
+      "execution_count": 30
+    },
+    {
+      "id": "04b82b4e-b890-4089-899f-8c8ec817200e",
+      "cell_type": "code",
+      "source": "import pandas as pd\nimport numpy as np\n\ndata = {\n    \"Name\": [\"Alice\", \"Bob\", None, \"David\", \"Eva\"],\n    \"Age\": [25, np.nan, 30, 22, np.nan],\n    \"City\": [\"Lucknow\", \"Delhi\", \"Mumbai\", None, \"Kanpur\"],\n    \"Score\": [85.5, 90.0, np.nan, 88.0, None]\n}\n\ndf = pd.DataFrame(data)\n\n\nprint(\"--- DataFrame ---\")\nprint(df)\nprint(\"\\n--- Missing Values Mask ---\")\nprint(df.isna())\n\n\nprint(\"\\n--- Missing Values Count Per Column ---\")\nprint(df.isna().sum())\n    \n  ",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "--- DataFrame ---\n    Name   Age     City  Score\n0  Alice  25.0  Lucknow   85.5\n1    Bob   NaN    Delhi   90.0\n2    NaN  30.0   Mumbai    NaN\n3  David  22.0      NaN   88.0\n4    Eva   NaN   Kanpur    NaN\n\n--- Missing Values Mask ---\n    Name    Age   City  Score\n0  False  False  False  False\n1  False   True  False  False\n2   True  False  False   True\n3  False  False   True  False\n4  False   True  False   True\n\n--- Missing Values Count Per Column ---\nName     1\nAge      2\nCity     1\nScore    2\ndtype: int64\n"
+        }
+      ],
+      "execution_count": 1
+    },
+    {
+      "id": "ee212a28-486f-449b-80fc-09b1f69adb43",
+      "cell_type": "code",
+      "source": "print(df.isnull())",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "    Name    Age   City  Score\n0  False  False  False  False\n1  False   True  False  False\n2   True  False  False   True\n3  False  False   True  False\n4  False   True  False   True\n"
+        }
+      ],
+      "execution_count": 3
+    },
+    {
+      "id": "aae6cafd-4774-4130-b46c-9c13e8530bf5",
+      "cell_type": "code",
+      "source": "print(df.isnull().sum())",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "Name     1\nAge      2\nCity     1\nScore    2\ndtype: int64\n"
+        }
+      ],
+      "execution_count": 4
+    },
+    {
+      "id": "98397d70-f45f-4237-9010-9dbd13abd2c7",
+      "cell_type": "code",
+      "source": "df.fillna(45)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 5,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "    Name   Age     City  Score\n0  Alice  25.0  Lucknow   85.5\n1    Bob  45.0    Delhi   90.0\n2     45  30.0   Mumbai   45.0\n3  David  22.0       45   88.0\n4    Eva  45.0   Kanpur   45.0",
+            "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Name</th>\n      <th>Age</th>\n      <th>City</th>\n      <th>Score</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>Alice</td>\n      <td>25.0</td>\n      <td>Lucknow</td>\n      <td>85.5</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>Bob</td>\n      <td>45.0</td>\n      <td>Delhi</td>\n      <td>90.0</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>45</td>\n      <td>30.0</td>\n      <td>Mumbai</td>\n      <td>45.0</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>David</td>\n      <td>22.0</td>\n      <td>45</td>\n      <td>88.0</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>Eva</td>\n      <td>45.0</td>\n      <td>Kanpur</td>\n      <td>45.0</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 5
+    },
+    {
+      "id": "2ad42c30-fb78-4786-bc84-d17da6262dd3",
+      "cell_type": "code",
+      "source": "df.fillna(0)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 6,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "    Name   Age     City  Score\n0  Alice  25.0  Lucknow   85.5\n1    Bob   0.0    Delhi   90.0\n2      0  30.0   Mumbai    0.0\n3  David  22.0        0   88.0\n4    Eva   0.0   Kanpur    0.0",
+            "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Name</th>\n      <th>Age</th>\n      <th>City</th>\n      <th>Score</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>Alice</td>\n      <td>25.0</td>\n      <td>Lucknow</td>\n      <td>85.5</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>Bob</td>\n      <td>0.0</td>\n      <td>Delhi</td>\n      <td>90.0</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>0</td>\n      <td>30.0</td>\n      <td>Mumbai</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>David</td>\n      <td>22.0</td>\n      <td>0</td>\n      <td>88.0</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>Eva</td>\n      <td>0.0</td>\n      <td>Kanpur</td>\n      <td>0.0</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 6
+    },
+    {
+      "id": "e1ee6bff-677b-49a4-bea2-877f9bef5629",
+      "cell_type": "code",
+      "source": "df.fillna(\"Not Available\")",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 7,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "            Name            Age           City          Score\n0          Alice           25.0        Lucknow           85.5\n1            Bob  Not Available          Delhi           90.0\n2  Not Available           30.0         Mumbai  Not Available\n3          David           22.0  Not Available           88.0\n4            Eva  Not Available         Kanpur  Not Available",
+            "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Name</th>\n      <th>Age</th>\n      <th>City</th>\n      <th>Score</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>Alice</td>\n      <td>25.0</td>\n      <td>Lucknow</td>\n      <td>85.5</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>Bob</td>\n      <td>Not Available</td>\n      <td>Delhi</td>\n      <td>90.0</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>Not Available</td>\n      <td>30.0</td>\n      <td>Mumbai</td>\n      <td>Not Available</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>David</td>\n      <td>22.0</td>\n      <td>Not Available</td>\n      <td>88.0</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>Eva</td>\n      <td>Not Available</td>\n      <td>Kanpur</td>\n      <td>Not Available</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 7
+    },
+    {
+      "id": "0773bc75-247e-4189-8e56-d74243568c62",
+      "cell_type": "code",
+      "source": "df.fillna({\n    \"Score\":5000,\n    \"Bonus\":3000,\n})",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 9,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "    Name   Age     City   Score\n0  Alice  25.0  Lucknow    85.5\n1    Bob   NaN    Delhi    90.0\n2    NaN  30.0   Mumbai  5000.0\n3  David  22.0      NaN    88.0\n4    Eva   NaN   Kanpur  5000.0",
+            "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Name</th>\n      <th>Age</th>\n      <th>City</th>\n      <th>Score</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>Alice</td>\n      <td>25.0</td>\n      <td>Lucknow</td>\n      <td>85.5</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>Bob</td>\n      <td>NaN</td>\n      <td>Delhi</td>\n      <td>90.0</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>NaN</td>\n      <td>30.0</td>\n      <td>Mumbai</td>\n      <td>5000.0</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>David</td>\n      <td>22.0</td>\n      <td>NaN</td>\n      <td>88.0</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>Eva</td>\n      <td>NaN</td>\n      <td>Kanpur</td>\n      <td>5000.0</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 9
+    },
+    {
+      "id": "b24331e7-36ec-46c8-a4a6-c8e124e9d878",
+      "cell_type": "code",
+      "source": "df[\"Score\"] = df[\"Score\"].fillna(df[\"Score\"].mean())\nprint(df)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "    Name   Age     City      Score\n0  Alice  25.0  Lucknow  85.500000\n1    Bob   NaN    Delhi  90.000000\n2    NaN  30.0   Mumbai  87.833333\n3  David  22.0      NaN  88.000000\n4    Eva   NaN   Kanpur  87.833333\n"
+        }
+      ],
+      "execution_count": 12
+    },
+    {
+      "id": "84d81f1a-fdfe-447f-bad6-5fbf24e351fa",
+      "cell_type": "code",
+      "source": "df[\"Score\"] = df[\"Score\"].fillna(df[\"Score\"].median())\nprint(df)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "    Name   Age     City      Score\n0  Alice  25.0  Lucknow  85.500000\n1    Bob   NaN    Delhi  90.000000\n2    NaN  30.0   Mumbai  87.833333\n3  David  22.0      NaN  88.000000\n4    Eva   NaN   Kanpur  87.833333\n"
+        }
+      ],
+      "execution_count": 14
+    },
+    {
+      "id": "f457c92e-270c-4e9d-a7b7-8a43b906d79a",
+      "cell_type": "code",
+      "source": "df[\"Name\"] = df[\"Name\"].fillna(df[\"Name\"].mode())\nprint(df)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "      Name   Age     City      Score\n0  Lucknow  25.0  Lucknow  85.500000\n1    Delhi   NaN    Delhi  90.000000\n2   Mumbai  30.0   Mumbai  87.833333\n3   Mumbai  22.0      NaN  88.000000\n4   Kanpur   NaN   Kanpur  87.833333\n"
+        }
+      ],
+      "execution_count": 16
+    },
+    {
+      "id": "6bfa0146-1121-4d68-8ffc-a685700394b4",
+      "cell_type": "code",
+      "source": "df.dropna()",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 22,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "      Name   Age     City      Score\n0  Lucknow  25.0  Lucknow  85.500000\n2   Mumbai  30.0   Mumbai  87.833333",
+            "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Name</th>\n      <th>Age</th>\n      <th>City</th>\n      <th>Score</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>Lucknow</td>\n      <td>25.0</td>\n      <td>Lucknow</td>\n      <td>85.500000</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>Mumbai</td>\n      <td>30.0</td>\n      <td>Mumbai</td>\n      <td>87.833333</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 22
+    },
+    {
+      "id": "eb63616a-fc84-4f48-9048-c95a4dd3434f",
+      "cell_type": "code",
+      "source": "import numpy as np\nimport pandas as pd\n\n\nnp.random.seed(42)\n\nn_samples = 1000\n\n\nfirst_names = [\n    \"Alice\",\n    \"Bob\",\n    \"Charlie\",\n    \"David\",\n    \"Eva\",\n    \"Frank\",\n    \"Grace\",\n    \"Henry\",\n    \"Ivy\",\n    \"Jack\",\n    \"Karen\",\n    \"Leo\",\n    \"Mona\",\n    \"Nathan\",\n    \"Olivia\",\n]\nlast_names = [\n    \"Smith\",\n    \"Johnson\",\n    \"Williams\",\n    \"Brown\",\n    \"Jones\",\n    \"Garcia\",\n    \"Miller\",\n    \"Davis\",\n    \"Rodriguez\",\n    \"Martinez\",\n]\ndepartments = [\"HR\", \"IT\", \"Finance\", \"Marketing\", \"Sales\", \"Operations\", \"R&D\"]\n\n\nids = np.arange(1001, 1001 + n_samples)\nnames = [\n    f\"{np.random.choice(first_names)} {np.random.choice(last_names)}\"\n    for _ in range(n_samples)\n]\ndepts = np.random.choice(departments, size=n_samples)\nages = np.random.randint(22, 65, size=n_samples).astype(float)\nsalaries = np.random.randint(45000, 130000, size=n_samples).astype(floa\n\n                                                                   \ndf = pd.DataFrame(\n    {\n        \"ID\": ids,\n        \"Name\": names,\n        \"Department\": depts,\n        \"Age\": ages,\n        \"Salary\": salaries,\n    }\n)\n\n\n\ndef add_missing_values(series, missing_percentage=0.1):\n    mask = np.random.rand(len(series)) < missing_percentage\n    series[mask] = np.nan\n    return series\n\n\n\ndf[\"Name\"] = add_missing_values(df[\"Name\"].astype(object), 0.08)\ndf[\"Department\"] = add_missing_values(df[\"Department\"].astype(object), 0.10)\ndf[\"Age\"] = add_missing_values(df[\"Age\"], 0.12)\ndf[\"Salary\"] = add_missing_values(df[\"Salary\"], 0.15)\n\n# Save to CSV (optional)\n# df.to_csv(\"employees_1000_missing.csv\", index=False)\n\n\nprint(\"--- Missing Values Summary ---\")\nprint(df.isna().sum())\n\nprint(\"\\n--- First 10 Rows ---\")\nprint(df.head(10))",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "--- Missing Values Summary ---\nID              0\nName           86\nDepartment     94\nAge           118\nSalary        151\ndtype: int64\n\n--- First 10 Rows ---\n     ID            Name  Department   Age    Salary\n0  1001     Grace Brown     Finance  35.0   92377.0\n1  1002      Mona Davis     Finance  35.0       NaN\n2  1003      Mona Jones       Sales   NaN  107491.0\n3  1004  Grace Martinez       Sales  41.0  100621.0\n4  1005  Charlie Miller  Operations  32.0  103283.0\n5  1006     Karen Davis         R&D  37.0   61923.0\n6  1007       Eva Brown         R&D  52.0       NaN\n7  1008             NaN          HR  27.0  107261.0\n8  1009  Charlie Garcia         R&D  40.0   99336.0\n9  1010     Eva Johnson   Marketing  58.0  119083.0\n"
+        }
+      ],
+      "execution_count": 1
+    },
+    {
+      "id": "5bbbecb2-d6f9-4462-bc63-79c949a0b382",
+      "cell_type": "code",
+      "source": "print(df.isnull())",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "        ID   Name  Department    Age  Salary\n0    False  False       False  False   False\n1    False  False       False  False    True\n2    False  False       False   True   False\n3    False  False       False  False   False\n4    False  False       False  False   False\n..     ...    ...         ...    ...     ...\n995  False  False       False   True   False\n996  False  False        True  False   False\n997  False  False       False  False    True\n998  False  False       False  False   False\n999  False  False       False   True    True\n\n[1000 rows x 5 columns]\n"
+        }
+      ],
+      "execution_count": 2
+    },
+    {
+      "id": "44c4a51f-ae36-4e13-b548-1e85351ff5fc",
+      "cell_type": "code",
+      "source": "df.fillna(58)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 8,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "       ID            Name  Department   Age    Salary\n0    1001     Grace Brown     Finance  35.0   92377.0\n1    1002      Mona Davis     Finance  35.0      58.0\n2    1003      Mona Jones       Sales  58.0  107491.0\n3    1004  Grace Martinez       Sales  41.0  100621.0\n4    1005  Charlie Miller  Operations  32.0  103283.0\n..    ...             ...         ...   ...       ...\n995  1996   Frank Johnson          IT  58.0   56094.0\n996  1997  Charlie Garcia          58  55.0   78418.0\n997  1998       Eva Davis  Operations  30.0      58.0\n998  1999    Ivy Williams   Marketing  45.0  117374.0\n999  2000    Leo Martinez          HR  58.0      58.0\n\n[1000 rows x 5 columns]",
+            "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>ID</th>\n      <th>Name</th>\n      <th>Department</th>\n      <th>Age</th>\n      <th>Salary</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>1001</td>\n      <td>Grace Brown</td>\n      <td>Finance</td>\n      <td>35.0</td>\n      <td>92377.0</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>1002</td>\n      <td>Mona Davis</td>\n      <td>Finance</td>\n      <td>35.0</td>\n      <td>58.0</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>1003</td>\n      <td>Mona Jones</td>\n      <td>Sales</td>\n      <td>58.0</td>\n      <td>107491.0</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>1004</td>\n      <td>Grace Martinez</td>\n      <td>Sales</td>\n      <td>41.0</td>\n      <td>100621.0</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>1005</td>\n      <td>Charlie Miller</td>\n      <td>Operations</td>\n      <td>32.0</td>\n      <td>103283.0</td>\n    </tr>\n    <tr>\n      <th>...</th>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n    </tr>\n    <tr>\n      <th>995</th>\n      <td>1996</td>\n      <td>Frank Johnson</td>\n      <td>IT</td>\n      <td>58.0</td>\n      <td>56094.0</td>\n    </tr>\n    <tr>\n      <th>996</th>\n      <td>1997</td>\n      <td>Charlie Garcia</td>\n      <td>58</td>\n      <td>55.0</td>\n      <td>78418.0</td>\n    </tr>\n    <tr>\n      <th>997</th>\n      <td>1998</td>\n      <td>Eva Davis</td>\n      <td>Operations</td>\n      <td>30.0</td>\n      <td>58.0</td>\n    </tr>\n    <tr>\n      <th>998</th>\n      <td>1999</td>\n      <td>Ivy Williams</td>\n      <td>Marketing</td>\n      <td>45.0</td>\n      <td>117374.0</td>\n    </tr>\n    <tr>\n      <th>999</th>\n      <td>2000</td>\n      <td>Leo Martinez</td>\n      <td>HR</td>\n      <td>58.0</td>\n      <td>58.0</td>\n    </tr>\n  </tbody>\n</table>\n<p>1000 rows × 5 columns</p>\n</div>"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 8
+    },
+    {
+      "id": "378c7d76-03ea-4af3-ac75-80142db16afb",
+      "cell_type": "code",
+      "source": "df.fillna(\"Not Available\")",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "execution_count": 9,
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": "       ID            Name     Department            Age         Salary\n0    1001     Grace Brown        Finance           35.0        92377.0\n1    1002      Mona Davis        Finance           35.0  Not Available\n2    1003      Mona Jones          Sales  Not Available       107491.0\n3    1004  Grace Martinez          Sales           41.0       100621.0\n4    1005  Charlie Miller     Operations           32.0       103283.0\n..    ...             ...            ...            ...            ...\n995  1996   Frank Johnson             IT  Not Available        56094.0\n996  1997  Charlie Garcia  Not Available           55.0        78418.0\n997  1998       Eva Davis     Operations           30.0  Not Available\n998  1999    Ivy Williams      Marketing           45.0       117374.0\n999  2000    Leo Martinez             HR  Not Available  Not Available\n\n[1000 rows x 5 columns]",
+            "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>ID</th>\n      <th>Name</th>\n      <th>Department</th>\n      <th>Age</th>\n      <th>Salary</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>1001</td>\n      <td>Grace Brown</td>\n      <td>Finance</td>\n      <td>35.0</td>\n      <td>92377.0</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>1002</td>\n      <td>Mona Davis</td>\n      <td>Finance</td>\n      <td>35.0</td>\n      <td>Not Available</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>1003</td>\n      <td>Mona Jones</td>\n      <td>Sales</td>\n      <td>Not Available</td>\n      <td>107491.0</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>1004</td>\n      <td>Grace Martinez</td>\n      <td>Sales</td>\n      <td>41.0</td>\n      <td>100621.0</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>1005</td>\n      <td>Charlie Miller</td>\n      <td>Operations</td>\n      <td>32.0</td>\n      <td>103283.0</td>\n    </tr>\n    <tr>\n      <th>...</th>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n    </tr>\n    <tr>\n      <th>995</th>\n      <td>1996</td>\n      <td>Frank Johnson</td>\n      <td>IT</td>\n      <td>Not Available</td>\n      <td>56094.0</td>\n    </tr>\n    <tr>\n      <th>996</th>\n      <td>1997</td>\n      <td>Charlie Garcia</td>\n      <td>Not Available</td>\n      <td>55.0</td>\n      <td>78418.0</td>\n    </tr>\n    <tr>\n      <th>997</th>\n      <td>1998</td>\n      <td>Eva Davis</td>\n      <td>Operations</td>\n      <td>30.0</td>\n      <td>Not Available</td>\n    </tr>\n    <tr>\n      <th>998</th>\n      <td>1999</td>\n      <td>Ivy Williams</td>\n      <td>Marketing</td>\n      <td>45.0</td>\n      <td>117374.0</td>\n    </tr>\n    <tr>\n      <th>999</th>\n      <td>2000</td>\n      <td>Leo Martinez</td>\n      <td>HR</td>\n      <td>Not Available</td>\n      <td>Not Available</td>\n    </tr>\n  </tbody>\n</table>\n<p>1000 rows × 5 columns</p>\n</div>"
+          },
+          "metadata": {}
+        }
+      ],
+      "execution_count": 9
+    },
+    {
+      "id": "b23084f9-b05d-41d2-a007-1b27be0340b8",
+      "cell_type": "code",
+      "source": "",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [],
+      "execution_count": null
+    }
+  ]
+}
